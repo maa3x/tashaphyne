@@ -2,20 +2,20 @@ package tashaphyne
 
 import (
 	"regexp"
-	"slices"
 )
 
-var VerbList []string
+var Verbs map[string]struct{}
 
 func init() {
-	VerbList = make([]string, len(verbs))
+	Verbs = make(map[string]struct{}, len(verbs))
 	for i := range verbs {
-		VerbList[i] = VerbStamp(Runes(verbs[i]))
+		Verbs[VerbStamp(Runes(verbs[i]))] = struct{}{}
 	}
 }
 
 func IsVerbStamp(s string) bool {
-	return slices.Contains(VerbList, s)
+	_, ok := Verbs[s]
+	return ok
 }
 
 func VerbStamp(s Runes) string {
