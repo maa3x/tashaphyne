@@ -87,9 +87,9 @@ func (s *Stemmer) createPrefixesTree(prefixes []string) map[string]any {
 		}
 
 		if endMarker, exists := branch["#"]; exists {
-			endMarker.(map[string]string)[prefix] = "#"
+			endMarker.(map[string]any)[prefix] = "#"
 		} else {
-			branch["#"] = map[string]string{prefix: "#"}
+			branch["#"] = map[string]any{prefix: "#"}
 		}
 	}
 
@@ -109,9 +109,9 @@ func (s *Stemmer) createSuffixesTree(suffixes []string) map[string]any {
 		}
 
 		if endMarker, exists := branch["#"]; exists {
-			endMarker.(map[string]string)[suffix] = "#"
+			endMarker.(map[string]any)[suffix] = "#"
 		} else {
-			branch["#"] = map[string]string{suffix: "#"}
+			branch["#"] = map[string]any{suffix: "#"}
 		}
 	}
 
